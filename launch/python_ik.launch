@@ -18,7 +18,7 @@
   <param name="robot_description_semantic" command="$(find xacro)/xacro -/-inorder '$(find panda_moveit_config)/config/panda_arm.srdf.xacro'" />  -->
 
  
-  <node launch-prefix="$(arg launch_prefix)" pkg="ur5_exotica" type="example_ik" name="example_ik_node" output="screen" />
+  <node launch-prefix="$(arg launch_prefix)" pkg="ur5_exotica" type="example_ik.py" name="example_ik_node" output="screen" />
 
-  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="false"	args="-d $(find exotica_examples)/resources/rviz.rviz" /> -->
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false"	args="-d $(find exotica_examples)/resources/rviz.rviz" />
 </launch>
