@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="xterm -e gdb --args python" />
+
+<!-- Load universal robot description format (URDF) -->
+<!-- ################ Kuka lwr arm ############# -->
+  <!-- <param name="robot_description" textfile="$(find exotica_examples)/resources/robots/lwr_simplified.urdf" />
+  <param name="robot_description_semantic" textfile="$(find exotica_examples)/resources/robots/lwr_simplified.srdf" /> -->
+
+  <!-- ##############UR5 ROBOT############ -->
+  <param name="robot_description" textfile="$(find ur5_exotica)/resources/robots/ur5_robot.urdf" />
+  <param name="robot_description_semantic" textfile="$(find ur5_exotica)/resources/robots/ur5_robot.srdf" />
+
+  <!-- ############ Franka Panda ############### -->
+<!--   <param name="robot_description" command="$(find xacro)/xacro -/-inorder '$(find franka_description)/robots/panda_arm.urdf.xacro'" />
+  <param name="robot_description_semantic" command="$(find xacro)/xacro -/-inorder '$(find panda_moveit_config)/config/panda_arm.srdf.xacro'" />  -->
+
+ 
+  <node launch-prefix="$(arg launch_prefix)" pkg="ur5_exotica" type="example_ik" name="example_ik_node" output="screen" />
+
+  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="false"	args="-d $(find exotica_examples)/resources/rviz.rviz" /> -->
+</launch>
